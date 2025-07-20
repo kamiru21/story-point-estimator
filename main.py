@@ -1,5 +1,5 @@
 import streamlit as st
-import openai
+from openai import OpenAI
 
 st.set_page_config(page_title="Story Point Estimator")
 
@@ -13,18 +13,19 @@ with st.form("story_form"):
     submitted = st.form_submit_button("Estimate Story Points")
 
 # Setup OpenAI key
-openai.api_key = st.secrets["OPENAI_API_KEY"]
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 def estimate_points(title, desc):
     full_input = f"User story title: {title}\nDescription: {desc}\n\nEstimate story points (1, 2, 3, 5, 8, or 13):"
     
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[{"role": "user", "content": full_input}],
         temperature=0.5,
         max_tokens=20
     )
-    return response.choices[0].message["content"].strip()
+    
+    return response.choices[0].message.content.strip()
 
 # Handle form
 if submitted and title:
