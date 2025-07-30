@@ -35,7 +35,8 @@ if submitted and title:
     with st.spinner("Thinking..."):
         points, reason = estimate_points(title, description)
         st.success(f"Estimated Story Points: **{points}**")
-        st.info(reason)
+        st.markdown(f"💡 **Why:** {reason}")
+
 
 st.subheader("📥 Bulk Estimation from CSV")
 csv_file = st.file_uploader("Upload CSV with 'title' and 'description' columns", type="csv")
