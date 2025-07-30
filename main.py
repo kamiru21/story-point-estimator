@@ -22,7 +22,7 @@ def estimate_points(title, desc):
         model="gpt-3.5-turbo",
         messages=[{"role": "user", "content": full_input}],
         temperature=0.5,
-        max_tokens=20
+        max_tokens=100
     )
     
     output = response.choices[0].message.content.strip()
