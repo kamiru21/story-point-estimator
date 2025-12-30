@@ -11,6 +11,7 @@ A lightweight estimator that suggests story points using a consistent rubric (co
 - This app will help to reduce the need of scrubbing user stories points
 - Have a feel between human and estimated story points
 - The app will explain why the need of the estimated points and efforts
+- Utilizes openAI LLM
 
 ### ✍️ Authors
 
